@@ -17,3 +17,7 @@ app.get('/api/quotes/random', (req, res) => {
 
     res.status(200).send({quote})
 })
+
+app.get('/api/quotes', (req, res) => {
+    res.status(200).send({quotes})
+})
