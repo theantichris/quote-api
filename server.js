@@ -19,5 +19,13 @@ app.get('/api/quotes/random', (req, res) => {
 })
 
 app.get('/api/quotes', (req, res) => {
+    const { person } = req.query
+
+    if (person) {
+        const filteredQuotes = quotes.filter(quote => quote.person.toLowerCase() === person.toLowerCase())
+
+        res.status(200).send({quotes: filteredQuotes})
+    }
+
     res.status(200).send({quotes})
 })
