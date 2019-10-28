@@ -29,3 +29,17 @@ app.get('/api/quotes', (req, res) => {
 
     res.status(200).send({quotes})
 })
+
+app.post('/api/quotes', (req, res) => {
+    const { person, quote } = req.query
+
+    if (!person || !quote) {
+        res.status(400).send()
+    }
+
+    const newQuote = {person, quote}
+
+    quotes.push(newQuote)
+    
+    res.send(201).send({quote: newQuote})
+})
